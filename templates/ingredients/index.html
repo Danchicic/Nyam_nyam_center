@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingredients</title>
+</head>
+<body>
+<header>
+    <h1>
+        List of Ingredients
+    </h1>
+    <div class="left-choose">
+        Total available ingredients for the amount ($): <span>{{ total_count }}</span>
+    </div>
+</header>
+<main>
+    <img src="media/ingredients/1.PNG" alt="chocopie2" style="width: 100px">
+    <div class="card-wrapper">
+        <form action="{{ url("ingredients:index") }}" method="post" id="form">
+            {{ csrf_input }}
+            {% for ingredient in ingredients %}
+                <div class="card">
+                    <div class="left-card-wrapper">
+                        <p class="bold">
+                            <b>{{ ingredient.name }}</b>
+                        </p>
+                        <p>Price: {{ ingredient.price_per_unit }}</p>
+                        <input type="button" class="delete" value="delete">
+                    </div>
+                    <div class="right-card-wrapper">
+                        {{ ingredient.available }} {{ ingredient.main_unit }}
+                        <input type="button" class="plus" value="+">
+                        <input type="button" class="minus" value="-">
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+            <button type="submit" id="submitButton">Принять изменения</button>
+
+        </form>
+
+    </div>
+
+</main>
+{#<script src="{{ static("ingredients/js.js") }}"></script>#}
+</body>
+</html>

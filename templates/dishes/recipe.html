@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ dish.name }}</title>
+    <link rel="stylesheet" href="{{ static('style.css') }}">
+</head>
+<body>
+<h1>Recipe for {{ dish.name }}</h1>
+
+<div class="left-choose">
+    <p>Category: <span>{{ dish.category.name }}</span></p>
+    <p>Cooking time: <span>{{ recipe.time }} minutes</span></p>
+</div>
+<div class="right-choose">
+    <p>Servings: <span>
+        <button class="minus">-</button>
+        <span class="int">{{ dish.base_servings }}</span>
+        <button class="plus">+</button></span>
+    </p>
+    <p>Total cost: <span>{{ recipe.final_cost|round(2) }} </span> <span>$</span></p>
+</div>
+<div class="description">
+    <p>Short description: {{ dish.description }}</p>
+</div>
+<div class="left-wrapper">
+    <p>Ingredients</p>
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Cost</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ingredient in recipe.ingredient %}
+            <tr>
+                <td><label for=""><input type="checkbox"></label></td>
+                <td>{{ ingredient.name }}</td>
+                <td>{{ ingredient.quantity }}</td>
+                <td>{{ ingredient.unit }}</td>
+                <td>{{ ingredient.cost }} {{ ingredient.cost_unit }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+<div class="right-wrapper">
+    <p>Cooking Process</p>
+    {% for step_desc in recipe.cooking_process %}
+        <p><span>{{ loop.index }})</span> {{ step_desc }} </p>
+
+    {% endfor %}
+</div>
+<footer>
+    <button class="back">Back</button>
+</footer>
+</body>
+</html>

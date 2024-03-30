@@ -1,0 +1,113 @@
+.left {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 20%;
+    height: 100vh;
+    width: 20%;
+    gap: 1vh;
+}
+
+h1 {
+    margin-left: 5vw;
+}
+
+.right-choose {
+    margin-left: 10%;
+    margin-right: 30%;
+}
+
+.box {
+    display: flex;
+    justify-content: normal;
+
+}
+
+.leftbox {
+    margin-right: 100px;
+}
+
+.rightbox {
+    display: block;
+
+}
+
+.dishes {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.dish_photo {
+    width: 300px;
+    height: 300px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+caption {
+    caption-side: bottom;
+    padding: 10px;
+    font-weight: bold;
+}
+
+thead,
+tfoot {
+    background-color: rgb(228 240 245);
+}
+
+th,
+td {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+}
+
+td:last-of-type {
+    text-align: center;
+}
+
+tbody > tr:nth-of-type(even) {
+    background-color: rgb(237 238 242);
+}
+
+tfoot th {
+    text-align: right;
+}
+
+tfoot td {
+    font-weight: bold;
+}
+
+.right-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-wrapper {
+    display: flex;
+    justify-content: normal;
+    flex-direction: column;
+
+}
+
+.dish {
+    position: relative;
+}
+
+.image-text {
+    position: absolute;
+    top: 225px;
+    left: 0;
+    color: white;
+    width: 300px;
+    height: 75px;
+    background: #00000094;
+    margin-bottom: 0;
+    text-align: center;
+
+}

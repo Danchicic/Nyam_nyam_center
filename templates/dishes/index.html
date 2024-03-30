@@ -1,0 +1,74 @@
+{#{% load user_filters %} #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dishes</title>
+    <link rel="stylesheet" href="{{ static("style.css") }}">
+    {#    <link rel="stylesheet" href="../../static/style.css">#}
+
+</head>
+<body>
+<h1>List of dishes</h1>
+<div class="box">
+    <div class="leftbox">
+
+
+        <nav class="left">
+            <a href={{ url('dishes:index') }}>Dishes</a>
+            <a href="{{ url('ingredients:index') }}">Ingredients</a>
+            <a href="{# {% url 'orders:index' %} #}">Orders</a>
+        </nav>
+    </div>
+    <div class="rightbox">
+        <div class="categories">
+            <div class="left-choose">
+                <label>
+                    categories
+                    <select name="categories" id="categories-select">
+                        <option value="0">
+                            All categories
+                        </option>
+                        {% for category in categories %}
+                            <option value="{{ category}}">
+                                {{ category }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </label>
+                <label>
+                    <input type="checkbox">Show only dishes with available ingredients
+                </label>
+            </div>
+
+            <div class="right-choose">
+                <label>
+                    Name:
+                    <input type="text" value="" placeholder="Search" id="search">
+                </label>
+                <label>
+                    Price:<input type="range">
+                </label>
+            </div>
+        </div>
+
+    </div>
+    <div class="dishes">
+        {% for dish in dishes %}
+            <a href="{{ url('dishes:recipe',args=[dish.address]) }}" class="dish">
+                <img src="{{ dish.image_path.name }}" alt="{{ dish.name }}" class="dish_photo">
+                <span class="image-text">
+                    {{ dish.name }}<br>
+                1 portion = {{ (dish.final_price / dish.base_servings) |round(2) }}$
+                </span>
+                <p category="{{ dish.category.name }}" style="display: none;"></p>
+
+
+            </a>
+        {% endfor %}
+    </div>
+</div>
+<script src="{{ static("js.js") }}"></script>
+</body>
+</html>
