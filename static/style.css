@@ -11,10 +11,6 @@ h1 {
     margin-left: 5vw;
 }
 
-.right-choose {
-    margin-left: 10%;
-    margin-right: 30%;
-}
 
 .box {
     display: flex;
@@ -23,17 +19,23 @@ h1 {
 }
 
 .leftbox {
-    margin-right: 100px;
+    padding-right: 100px;
+    height: 100vh;
+    border-right: 2px solid black;
+
 }
+
 
 .rightbox {
     display: block;
+    margin-left: 10px;
 
 }
 
 .dishes {
-    display: flex;
+    display: block;
     flex-direction: column;
+    text-align: center;
 
 }
 
@@ -101,7 +103,7 @@ tfoot td {
 
 .image-text {
     position: absolute;
-    top: 225px;
+    top: -61px;
     left: 0;
     color: white;
     width: 300px;
@@ -109,5 +111,34 @@ tfoot td {
     background: #00000094;
     margin-bottom: 0;
     text-align: center;
+    z-index: 1;
+
+}
+
+.categories {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.show-only {
+    display: block;
+}
+
+.right-choose {
+    display: block;
+}
+
+.name-search {
+}
+
+.range-search {
+    display: block;
+    position: relative;
+}
+
+.range-search input {
+    position: absolute;
+    left: 50px;
 
 }

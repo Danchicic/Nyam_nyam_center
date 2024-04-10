@@ -21,7 +21,9 @@
             <a href="{# {% url 'orders:index' %} #}">Orders</a>
         </nav>
     </div>
+
     <div class="rightbox">
+
         <div class="categories">
             <div class="left-choose">
                 <label>
@@ -31,44 +33,45 @@
                             All categories
                         </option>
                         {% for category in categories %}
-                            <option value="{{ category}}">
+                            <option value="{{ category }}">
                                 {{ category }}
                             </option>
                         {% endfor %}
                     </select>
                 </label>
-                <label>
+                <label class="show-only">
                     <input type="checkbox">Show only dishes with available ingredients
                 </label>
             </div>
 
             <div class="right-choose">
-                <label>
+                <label class="name-search">
                     Name:
                     <input type="text" value="" placeholder="Search" id="search">
                 </label>
-                <label>
+                <label class="range-search">
                     Price:<input type="range">
                 </label>
             </div>
         </div>
-
-    </div>
-    <div class="dishes">
-        {% for dish in dishes %}
-            <a href="{{ url('dishes:recipe',args=[dish.address]) }}" class="dish">
-                <img src="{{ dish.image_path.name }}" alt="{{ dish.name }}" class="dish_photo">
-                <span class="image-text">
+        <div class="dishes">
+            {% for dish in dishes %}
+                <a href="{{ url('dishes:recipe',args=[dish.address]) }}" class="dish">
+                    <img src="{{ dish.image_path.name }}" alt="{{ dish.name }}" class="dish_photo">
+                    <span class="image-text">
                     {{ dish.name }}<br>
                 1 portion = {{ (dish.final_price / dish.base_servings) |round(2) }}$
                 </span>
-                <p category="{{ dish.category.name }}" style="display: none;"></p>
+                    <p category="{{ dish.category.name }}" style="display: none;"></p>
 
 
-            </a>
-        {% endfor %}
+                </a>
+            {% endfor %}
+        </div>
     </div>
 </div>
+
+
 <script src="{{ static("js.js") }}"></script>
 </body>
 </html>
